@@ -1,66 +1,65 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0f766e">
-<link rel="manifest" href="manifest.json">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f766e"><link rel="manifest" href="manifest.json">
 <title>مساري العلمي</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<style>
+:root{--p:#0f766e;--p2:#115e59;--bg:#f5f7f7;--card:#fff;--muted:#64748b;--line:#e2e8f0;--ok:#15803d;--soft:#e6f4f1}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Segoe UI",sans-serif;background:var(--bg);color:#0f172a}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.top{padding:22px 18px 10px;background:#fff;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:800;color:var(--p)}h1{margin:2px 0 0;font-size:30px}.wrap{max-width:980px;margin:auto;padding:18px 16px 90px}.hero{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;margin-bottom:16px}.hero h2{margin:0 0 6px}.muted,.small{color:var(--muted);font-size:13px}.progress{height:8px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin:14px 0}.progress i{display:block;height:100%;background:var(--p);width:0}.tabs{position:fixed;bottom:0;right:0;left:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;z-index:20}.tabs button{background:#fff;padding:12px 15px;color:var(--muted);flex:1;max-width:180px}.tabs button.active{color:var(--p);font-weight:800;background:var(--soft)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}@media(max-width:700px){.grid{grid-template-columns:1fr}}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}.card h3{margin:0 0 8px}.tag{display:inline-block;padding:5px 9px;border-radius:999px;background:var(--soft);color:var(--p);font-size:12px;font-weight:700}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.btn{padding:10px 13px;border-radius:12px;background:var(--p);color:#fff;font-weight:700}.btn.secondary{background:#eef2f2;color:#0f766e}.btn.ghost{background:#fff;color:var(--p);border:1px solid #b9d9d4}.btn.danger{background:#fee2e2;color:#991b1b}.plan{display:grid;gap:10px}.plan-item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}.plan-item h3{margin:8px 0 6px;font-size:16px}.checkgrid{display:flex;gap:7px;flex-wrap:wrap}.check{background:#f1f5f9;color:#334155;border-radius:10px;padding:8px 10px}.check.done{background:#dcfce7;color:#166534}.lesson{padding:14px;border:1px solid var(--line);border-radius:16px;background:#fff;margin-bottom:10px}.lessonhead{display:flex;justify-content:space-between;gap:10px}.lessonno{font-size:12px;color:var(--muted)}.taskgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.task{padding:12px 6px;border-radius:12px;background:#f1f5f9;color:#334155}.task.checked{background:#dcfce7;color:#166534}.task small{display:block;margin-top:4px}.closed{color:#15803d;font-weight:700;margin-top:9px;font-size:13px}.open{color:#b45309;font-size:13px;margin-top:9px}.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}@media(max-width:700px){.statgrid{grid-template-columns:repeat(2,1fr)}}.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}.stat b{display:block;font-size:25px;margin-top:6px}.field{display:grid;gap:6px;margin:10px 0}.field input,.field select,.field textarea{width:100%;padding:11px;border:1px solid var(--line);border-radius:12px;background:#fff}.section-title{display:flex;justify-content:space-between;align-items:center;margin:20px 0 10px}.notice{background:#ecfeff;border:1px solid #bae6fd;border-radius:14px;padding:13px;margin-bottom:12px}.focusbox{background:#fff7ed;border:1px solid #fed7aa;border-radius:16px;padding:14px}.empty{padding:28px;text-align:center;color:var(--muted)}.hidden{display:none!important}
+</style></head>
 <body>
-<header class="topbar">
-  <div>
-    <div class="eyebrow">مساري العلمي</div>
-    <h1 id="greeting">اليوم</h1>
-  </div>
-  <button id="resetBtn" class="ghost">إعادة ضبط</button>
-</header>
-
-<main>
-  <section id="today" class="page active">
-    <div class="hero card">
-      <div>
-        <span class="label">تركيز اليوم</span>
-        <h2>خطوة صغيرة كل يوم</h2>
-        <p>دروسك ومراجعاتك وقراءتك في مكان واحد.</p>
-      </div>
-      <div class="progress-ring"><span id="todayPct">0%</span></div>
-    </div>
-
-    <div class="section-head"><h2>الدراسة</h2><span id="studyCount"></span></div>
-    <div id="studyToday" class="stack"></div>
-
-    <div class="section-head"><h2>المراجعة</h2><span id="reviewCount"></span></div>
-    <div id="reviews" class="stack"></div>
-
-    <div class="section-head"><h2>القراءة</h2><span id="readingCount"></span></div>
-    <div id="readingToday" class="stack"></div>
-  </section>
-
-  <section id="study" class="page">
-    <div class="section-head"><h2>مسارات الدراسة</h2><span>مادة نشطة واحدة لكل منصة</span></div>
-    <div id="studyTracks" class="stack"></div>
-  </section>
-
-  <section id="reading" class="page">
-    <div class="section-head"><h2>القراءة</h2><span>3 مسارات فقط</span></div>
-    <div id="readingTracks" class="stack"></div>
-  </section>
-
-  <section id="stats" class="page">
-    <div class="section-head"><h2>الإحصائيات</h2></div>
-    <div id="statsGrid" class="stats-grid"></div>
-  </section>
+<header class="top"><div><div class="brand">مساري العلمي</div><h1 id="pageTitle">اليوم</h1></div><button class="btn secondary" onclick="resetData()">إعادة ضبط</button></header>
+<main class="wrap">
+<section id="todayPage"><div class="hero"><div class="muted">تركيز اليوم</div><h2 id="todayModeTitle">خطة مرنة</h2><div id="todaySummary" class="muted"></div><div class="progress"><i id="todayProgress"></i></div><div class="row"><button class="btn" onclick="chooseFocus()">🎯 يوم تركيز</button><button class="btn secondary" onclick="addExtraStudy()">➕ دراسة خارج الخطة</button></div></div>
+<div class="section-title"><h2>🎓 الدراسة</h2><span class="small">الخطة المقترحة 4 دروس</span></div><div id="studyPlan" class="plan"></div>
+<div class="section-title"><h2>📖 القراءة</h2><span class="small">الخطة المقترحة 100 صفحة</span></div><div id="readingPlan" class="plan"></div>
+<div class="section-title"><h2>🎧 الاستماع — اختياري</h2><span class="small">30 + 30 + 30 دقيقة</span></div><div id="listenPlan" class="grid"></div>
+<div class="section-title"><h2>🚗 وضع السيارة</h2></div><div class="card"><b>للاستماع فقط</b><p class="muted">استخدمه للمحاضرات والإنجليزي والفكر والمحتوى العام. لا يؤثر على إغلاق الدروس.</p><div class="row"><button class="btn" onclick="carMode()">🚗 تشغيل وضع السيارة</button></div></div>
+</section>
+<section id="studyPage" class="hidden"><div class="hero"><h2>🎓 الدراسة</h2><p class="muted">لا يوجد زر «إغلاق الدرس». يُغلق تلقائيًا فقط عند إتمام المحاضرة والتفريغ. الاختبار اختياري.</p><div class="row"><button class="btn secondary" onclick="openTrack('khaleelOld')">خليل — القديم</button><button class="btn secondary" onclick="openTrack('khaleelNew')">خليل — الجديد</button><button class="btn secondary" onclick="openTrack('shinqiti')">الشنقيطي</button><button class="btn secondary" onclick="openTrack('mahdara')">المحظرة</button></div></div><div id="studyList"></div></section>
+<section id="readingPage" class="hidden"><div class="hero"><h2>📖 القراءة</h2><p class="muted">الخطة تقترح 50/30/20، لكن يمكنك اختيار يوم تركيز أو تسجيل قراءة خارج الخطة.</p><div class="row"><button class="btn" onclick="readingFocus()">📚 يوم تركيز قراءة</button><button class="btn secondary" onclick="addReadingExtra()">➕ قراءة خارج الخطة</button></div></div><div id="books"></div></section>
+<section id="statsPage" class="hidden"><div class="hero"><h2>📊 الإحصائيات</h2><p class="muted">القياس للإنجاز الفعلي، وليس الالتزام الحرفي بالخطة.</p></div><div id="stats" class="statgrid"></div><div class="section-title"><h2>هذا الأسبوع</h2></div><div id="week"></div><div class="section-title"><h2>هذا الشهر</h2></div><div id="month"></div></section>
 </main>
-
-<nav class="nav">
-  <button class="nav-btn active" data-page="today">اليوم</button>
-  <button class="nav-btn" data-page="study">الدراسة</button>
-  <button class="nav-btn" data-page="reading">القراءة</button>
-  <button class="nav-btn" data-page="stats">الإحصائيات</button>
-</nav>
-
-<script src="app.js"></script>
-</body>
-</html>
+<nav class="tabs"><button class="active" onclick="showPage('todayPage',this,'اليوم')">اليوم</button><button onclick="showPage('studyPage',this,'الدراسة')">الدراسة</button><button onclick="showPage('readingPage',this,'القراءة')">القراءة</button><button onclick="showPage('statsPage',this,'الإحصائيات')">الإحصائيات</button></nav>
+<script>
+const KEY='masari-final-v8';
+const tracks={
+ khaleelOld:{name:'خليل — القديم',kind:'قديم',material:'متراكم — السنة الأولى',total:271},
+ khaleelNew:{name:'خليل — الجديد',kind:'جديد',material:'السنة الثانية',total:100},
+ shinqiti:{name:'أكاديمية الشيخ محمد الشنقيطي',kind:'الشنقيطي',material:'متن الورقات',total:12},
+ mahdara:{name:'المحظرة الشنقيطية',kind:'المحظرة',material:'تحفة الأطفال',total:9}
+};
+const books=[{id:'project',name:'كتاب المشروع',target:50,depth:'مشروع'},{id:'foundation',name:'الكتاب التأسيسي',target:30,depth:'تأسيس'},{id:'literature',name:'الرواية',target:20,depth:'أدب'}];
+let state=JSON.parse(localStorage.getItem(KEY)||'null')||{days:{},tasks:{},focus:null,books:{},notes:[],listen:{},extras:[]};
+function day(){return new Date().toISOString().slice(0,10)}function save(){localStorage.setItem(KEY,JSON.stringify(state));render()}
+function d(){let k=day();state.days[k]??={};return state.days[k]}
+function taskKey(id,n){return id+':'+n}function task(id,n){let k=taskKey(id,n);state.tasks[k]??={lecture:false,transcript:false,quiz:false};return state.tasks[k]}
+function closed(id,n){let t=task(id,n);return t.lecture&&t.transcript}
+function render(){renderToday();renderBooks();renderStats()}
+function renderToday(){let x=d();document.getElementById('todayModeTitle').textContent=x.focus?x.focus.title:'خطة مرنة — اختر ما يناسبك';let total=x.focus?x.focus.target:4;let done=x.focus?x.focus.done||0:0;document.getElementById('todaySummary').textContent=x.focus?`اليوم: ${x.focus.title} · ${done}/${total}`:'4 دروس مقترحة + 100 صفحة مقترحة + استماع اختياري';document.getElementById('todayProgress').style.width=Math.min(100,done/total*100)+'%';
+let plan=x.focus?`<div class="focusbox"><b>${x.focus.title}</b><p class="muted">${x.focus.detail}</p><div class="row"><button class="btn" onclick="focusProgress(1)">+ إنجاز واحد</button><button class="btn secondary" onclick="clearFocus()">العودة للخطة العادية</button></div></div>`:`<div class="plan-item"><span class="tag">الخطة الأساسية</span><h3>1 خليل قديم + 1 خليل جديد + 1 شنقيطي + 1 محظرة</h3><p class="muted">يمكنك استبدال اليوم كله بيوم تركيز، أو تسجيل أي إنجاز خارج الخطة.</p></div>`;document.getElementById('studyPlan').innerHTML=plan;
+if(!x.focus){document.getElementById('studyPlan').innerHTML+=[['khaleelOld','🟢 خليل قديم'],['khaleelNew','🔵 خليل جديد'],['shinqiti','🟣 شنقيطي'],['mahdara','🟠 محظرة']].map(([id,l])=>miniStudy(id,l)).join('')}
+let readDone=books.reduce((a,b)=>a+(x.reading?.[b.id]||0),0);document.getElementById('readingPlan').innerHTML=`<div class="plan-item"><span class="tag">الهدف</span><h3>100 صفحة</h3><p class="muted">أنجزت اليوم ${readDone} صفحة. الخطة ليست إلزامية.</p><div class="row"><button class="btn secondary" onclick="addReadingExtra()">تسجيل قراءة</button><button class="btn secondary" onclick="readingFocus()">يوم تركيز</button></div></div>`;
+let cats=[['en','🇬🇧 إنجليزي'],['thought','🧠 فكر وفلسفة'],['general','🌐 عام']];document.getElementById('listenPlan').innerHTML=cats.map(([id,l])=>`<div class="card"><span class="tag">اختياري</span><h3>${l}</h3><p class="muted">${x.listen?.[id]||0} / 30 دقيقة</p><button class="btn secondary" onclick="addListen('${id}')">+ تسجيل وقت</button></div>`).join('')}
+function miniStudy(id,label){let doneCount=Object.keys(state.tasks).filter(k=>k.startsWith(id+':')&&state.tasks[k].lecture&&state.tasks[k].transcript).length;let n=Math.min(tracks[id].total,doneCount+1);let t=task(id,n);return `<div class="plan-item"><span class="tag">${label}</span><h3>${tracks[id].material} — الدرس ${n}</h3><div class="checkgrid"><button class="check ${t.lecture?'done':''}" onclick="toggleTask('${id}',${n},'lecture')">🎧 ${t.lecture?'تمت':'المحاضرة'}</button><button class="check ${t.transcript?'done':''}" onclick="toggleTask('${id}',${n},'transcript')">📄 ${t.transcript?'تم':'التفريغ'}</button><button class="check ${t.quiz?'done':''}" onclick="toggleTask('${id}',${n},'quiz')">📝 ${t.quiz?'تم':'اختياري'}</button></div>${closed(id,n)?'<div class="closed">✅ الدرس مغلق تلقائيًا</div>':'<div class="open">⏳ لا يُغلق إلا بعد المحاضرة + التفريغ</div>'}</div>`}
+function toggleTask(id,n,type){let t=task(id,n);t[type]=!t[type];if(type!=='quiz'&&closed(id,n))addReview(id,n);save()}
+function addReview(id,n){let r=state.days[day()].reviews||[];state.days[day()].reviews=r;if(!r.some(x=>x.id===id&&x.n===n))r.push({id,n,due:Date.now()+86400000})}
+function openTrack(id){let tr=tracks[id];let html='';for(let n=1;n<=tr.total;n++){let t=task(id,n);html+=`<div class="lesson"><div class="lessonhead"><div><div class="lessonno">الدرس ${n} من ${tr.total}</div><b>${tr.name} — ${tr.material}</b></div><span class="tag">${closed(id,n)?'مغلق تلقائيًا':'قيد الدراسة'}</span></div><div class="taskgrid"><button class="task ${t.lecture?'checked':''}" onclick="toggleTask('${id}',${n},'lecture')">🎧<small>${t.lecture?'المحاضرة ✓':'المحاضرة'}</small></button><button class="task ${t.transcript?'checked':''}" onclick="toggleTask('${id}',${n},'transcript')">📄<small>${t.transcript?'التفريغ ✓':'التفريغ'}</small></button><button class="task ${t.quiz?'checked':''}" onclick="toggleTask('${id}',${n},'quiz')">📝<small>اختبار اختياري</small></button></div>${closed(id,n)?'<div class="closed">✅ أغلق تلقائيًا: المحاضرة + التفريغ مكتملان.</div>':'<div class="open">⏳ باقي حتى الإغلاق: إكمال المحاضرة والتفريغ.</div>'}</div>`}document.getElementById('studyList').innerHTML=`<div class="notice"><b>${tr.name}</b><br>${tr.material} · ${tr.total} درس</div>${html}`;showPage('studyPage',document.querySelectorAll('.tabs button')[1],'الدراسة')}
+function chooseFocus(){let type=prompt('اكتب نوع يوم التركيز: مثال «4 دروس ورقات» أو «4 دروس خليل»');if(!type)return;let target=4;state.days[day()].focus={title:'🎯 يوم تركيز',detail:type,target,done:0};save()}
+function focusProgress(n){let x=d();x.focus??={title:'يوم تركيز',detail:'',target:4,done:0};x.focus.done=Math.min(x.focus.target,x.focus.done+n);save()}
+function clearFocus(){delete d().focus;save()}
+function addExtraStudy(){let s=prompt('ماذا أنجزت خارج الخطة؟');if(!s)return;state.extras.push({date:day(),type:'study',text:s});save()}
+function readingFocus(){let b=prompt('ما الكتاب الذي تريد التركيز عليه اليوم؟');if(!b)return;let p=Number(prompt('كم صفحة مستهدف اليوم؟','100'));if(!p)return;d().focus={title:'📚 يوم تركيز قراءة',detail:`${b} — ${p} صفحة`,target:p,done:0};save()}
+function addReadingExtra(){let b=prompt('اسم الكتاب');if(!b)return;let p=Number(prompt('عدد الصفحات'));if(!p)return;d().readingExtra=(d().readingExtra||0)+p;state.extras.push({date:day(),type:'reading',text:`${b} — ${p} صفحة`});save()}
+function renderBooks(){let x=d();document.getElementById('books').innerHTML=books.map(b=>{let val=x.reading?.[b.id]||0;return `<div class="card"><span class="tag">${b.depth}</span><h3>${b.name}</h3><p class="muted">اليوم: ${val} / ${b.target} صفحة</p><div class="progress"><i style="width:${Math.min(100,val/b.target*100)}%"></i></div><div class="row"><button class="btn" onclick="addPages('${b.id}')">+ صفحات</button><button class="btn secondary" onclick="addNote('${b.id}')">💡 فكرة/اقتباس</button></div></div>`}).join('')}
+function addPages(id){let p=Number(prompt('كم صفحة قرأت؟'));if(!p)return;d().reading??={};d().reading[id]=(d().reading[id]||0)+p;save()}
+function addNote(id){let n=prompt('اكتب الفكرة أو الاقتباس');if(!n)return;state.notes.push({date:day(),book:id,text:n});save();alert('تم حفظ الملاحظة')}
+function addListen(id){let m=Number(prompt('كم دقيقة سمعت؟','30'));if(!m)return;d().listen??={};d().listen[id]=(d().listen[id]||0)+m;save()}
+function carMode(){alert('🚗 وضع السيارة: اختر من YouTube ما تريد سماعه. بعد الانتهاء سجّل الدقائق في قسم الاستماع. لا تسجل أو تتفاعل أثناء القيادة.')}
+function showPage(id,btn,title){document.querySelectorAll('main>section').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn?.classList.add('active');document.getElementById('pageTitle').textContent=title;if(id==='studyPage'&&!document.getElementById('studyList').innerHTML)openTrack('khaleelOld')}
+function rangeKeys(days){let a=[];for(let i=0;i<days;i++){let dt=new Date();dt.setDate(dt.getDate()-i);a.push(dt.toISOString().slice(0,10))}return a}
+function aggregate(keys){let lessons=0,pages=0,listen=0;keys.forEach(k=>{let x=state.days[k];if(!x)return;Object.values(state.tasks).forEach(()=>{});Object.values(x.reading||{}).forEach(v=>pages+=v);pages+=x.readingExtra||0;Object.values(x.listen||{}).forEach(v=>listen+=v)});let study=Object.values(state.tasks).filter(t=>t.lecture&&t.transcript).length;return{lessons:study,pages,listen}}
+function renderStats(){let all=aggregate(rangeKeys(3650)),w=aggregate(rangeKeys(7)),m=aggregate(rangeKeys(30));document.getElementById('stats').innerHTML=`<div class="stat">دروس مغلقة تلقائيًا<b>${all.lessons}</b></div><div class="stat">صفحات اليوم<b>${Object.values(d().reading||{}).reduce((a,b)=>a+b,0)+(d().readingExtra||0)}</b></div><div class="stat">استماع اليوم<b>${Object.values(d().listen||{}).reduce((a,b)=>a+b,0)} د</b></div><div class="stat">ملاحظات<b>${state.notes.length}</b></div>`;document.getElementById('week').innerHTML=`<div class="card"><b>${w.pages} صفحة</b> · ${w.listen} دقيقة استماع<br><span class="muted">الهدف المقترح: 700 صفحة + 24 درسًا، مع حرية الاستبدال.</span></div>`;document.getElementById('month').innerHTML=`<div class="card"><b>${m.pages} صفحة</b> · ${m.listen} دقيقة استماع<br><span class="muted">الإنجاز الفعلي، دون تراكم عقوبات.</span></div>`}
+function resetData(){if(confirm('سيحذف هذا كل بياناتك من هذا الجهاز. متأكد؟')){localStorage.removeItem(KEY);location.reload()}}
+render();
+</script></body></html>
