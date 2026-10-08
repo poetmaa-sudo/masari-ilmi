@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<link rel="manifest" href="manifest.json">
+<title>مساري العلمي</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <div class="eyebrow">مساري العلمي</div>
+    <h1 id="greeting">اليوم</h1>
+  </div>
+  <button id="resetBtn" class="ghost">إعادة ضبط</button>
+</header>
+
+<main>
+  <section id="today" class="page active">
+    <div class="hero card">
+      <div>
+        <span class="label">تركيز اليوم</span>
+        <h2>خطوة صغيرة كل يوم</h2>
+        <p>دروسك ومراجعاتك وقراءتك في مكان واحد.</p>
+      </div>
+      <div class="progress-ring"><span id="todayPct">0%</span></div>
+    </div>
+
+    <div class="section-head"><h2>الدراسة</h2><span id="studyCount"></span></div>
+    <div id="studyToday" class="stack"></div>
+
+    <div class="section-head"><h2>المراجعة</h2><span id="reviewCount"></span></div>
+    <div id="reviews" class="stack"></div>
+
+    <div class="section-head"><h2>القراءة</h2><span id="readingCount"></span></div>
+    <div id="readingToday" class="stack"></div>
+  </section>
+
+  <section id="study" class="page">
+    <div class="section-head"><h2>مسارات الدراسة</h2><span>مادة نشطة واحدة لكل منصة</span></div>
+    <div id="studyTracks" class="stack"></div>
+  </section>
+
+  <section id="reading" class="page">
+    <div class="section-head"><h2>القراءة</h2><span>3 مسارات فقط</span></div>
+    <div id="readingTracks" class="stack"></div>
+  </section>
+
+  <section id="stats" class="page">
+    <div class="section-head"><h2>الإحصائيات</h2></div>
+    <div id="statsGrid" class="stats-grid"></div>
+  </section>
+</main>
+
+<nav class="nav">
+  <button class="nav-btn active" data-page="today">اليوم</button>
+  <button class="nav-btn" data-page="study">الدراسة</button>
+  <button class="nav-btn" data-page="reading">القراءة</button>
+  <button class="nav-btn" data-page="stats">الإحصائيات</button>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>

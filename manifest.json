@@ -1,0 +1,11 @@
+{
+  "name":"مساري العلمي",
+  "short_name":"مساري",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#f6f7f7",
+  "theme_color":"#0f766e",
+  "lang":"ar",
+  "dir":"rtl",
+  "icons":[]
+}
